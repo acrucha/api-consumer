@@ -8,11 +8,15 @@ export class ConsumerFacade {
 
     constructor(private consumerService: ConsumerService){}
 
-    public getImage(unidade: number, detail_level: number): Observable<any> {
-        return this.consumerService.getImageFromAPI(unidade, detail_level);
+    public getImage(unidade: number, detail_level: number): Promise<string> {
+        return this.consumerService.getImageFromAPI(unidade, detail_level).then(image => {
+            return image;
+        });
     }
 
     public getInfos(unidade_id: number): Promise<Infos> {
-        return this.consumerService.getInfosFromAPI(unidade_id);
+        return this.consumerService.getInfosFromAPI(unidade_id).then(infos => {
+            return infos as Infos;
+        });
     }
 }

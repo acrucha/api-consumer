@@ -1,1 +1,14 @@
-<p>consumer works!</p>
+
+<button (click)="setInfos(7065)">Get Infos</button>
+<h1>Infos</h1>
+<p>Activity Amount = {{getInfos().activity_amount}}</p>
+<p>Average Duration_per_case = {{getInfos().average_duration_per_case}}</p>
+<p>Average Events per case = {{getInfos().average_events_per_case}}</p>
+<p>Case Amount = {{getInfos().case_amount}}</p>
+<p>Event Amount = {{getInfos().event_amount}}</p>
+<p>Events per case = {{getInfos().events_per_case}}</p>
+<p>Median Duration = {{getInfos().median_duration}}</p>
+<p>Variant Amount = {{getInfos().variant_amount}}</p>
+<h1>Image</h1>
+<div [innerHTML]="getImage()"></div>
+<button (click)="setImage(7065, 3)">Get Image</button>

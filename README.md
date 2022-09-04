@@ -36,7 +36,7 @@ sudo npm install -g @angular/cli
 ### 3. Set Node version to 18.8
 ```
 sudo npm install -g n
-n 18.8
+sudo n 18.8
 ```
 
 ### 4. Initialize the project

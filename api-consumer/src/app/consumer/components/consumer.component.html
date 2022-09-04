@@ -1,0 +1,29 @@
+<div class="all">
+    <div class="container">
+        <h1>Infos</h1>
+        <div class="info">
+            <div class="line"><span>Activity Amount</span><span>{{getInfos().activity_amount}}</span></div>
+            <div class="line"><span>Average Duration per case</span><span>{{getInfos().average_duration_per_case}}</span></div>
+            <div class="line"><span>Average Events per case</span><span>{{getInfos().average_events_per_case}}</span></div>
+            <div class="line"><span>Case Amount</span><span>{{getInfos().case_amount}}</span></div>
+            <div class="line"><span>Event Amount</span><span>{{getInfos().event_amount}}</span></div>
+            <div class="line"><span>Events per case</span><span>{{getInfos().events_per_case}}</span></div>
+            <div class="line"><span>Median Duration</span><span>{{getInfos().median_duration}}</span></div>
+            <div class="line"><span>Variant Amount</span><span>{{getInfos().variant_amount}}</span></div>
+        </div>
+        <div class="buttons-container">
+            <a class="btn" *ngIf="!hasInfo()" (click)="setInfos(7065)">Update Infos</a>
+            <a class="btn" *ngIf="hasInfo()" (click)="resetInfos()">Reset Infos</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="image">
+            <h1>Image</h1>
+            <div class="image-content" [innerHTML]="getImage()"></div>
+            <div class="buttons-container">
+                <a class="btn" *ngIf="!hasImage()" (click)="setImage(7065, 3)">Get Image</a>
+                <a class="btn" *ngIf="hasImage()" (click)="resetImage()">Reset Image</a>
+            </div>
+        </div>
+    </div>
+</div>

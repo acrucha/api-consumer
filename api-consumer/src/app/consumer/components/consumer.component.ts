@@ -30,14 +30,38 @@ export class ConsumerComponent implements OnInit {
     }).catch(err => console.log(err.message));
   }
 
+  resetImage() {
+    this.image = "";
+  }
+  
   getImage(): any {
     return this.image;
   }
 
+  hasImage(): Boolean {
+    if(this.image == "") {
+      return false;
+    }else{
+      return true;
+    }
+  }
+  
   setInfos(unidade_id: number) {
     this.consumerFacade.getInfos(unidade_id).then(infos => {
       this.infos = infos;
     }).catch(err => console.log(err.message));
+  }
+
+  resetInfos() {
+    this.infos = defaultInfos;
+  }
+
+  hasInfo(): Boolean {
+    if(this.infos == defaultInfos){
+      return false;
+    }else{
+      return true;
+    } 
   }
 
   getInfos(): Infos {

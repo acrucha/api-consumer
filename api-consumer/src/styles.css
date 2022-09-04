@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --color-background: #f1fdf4;
+    --color-primary: #17d36cd2 ;
+    --color-primary-dark: #028841ab;
+    --color-primary-darker: #025f2cce;
+    --color-all-black: #0a4223;
+    --color-background-title: #028841ab;
+
+    font-size: 55%;
+    font-family: 'DM Sans', sans-serif;
+}  
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, 
+body {
+    height: 100vh;
+}
+
+body {
+    margin: 2rem;
+    background: var(--color-background);
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    position: absolute;
+    top: 4rem;
+    left: 35%;
+    color: var(--color-background);
+    border-radius: 1rem;
+    padding: 1.5rem 15rem 1.5rem 15rem;
+    background-color: var(--color-background-title);
+    box-shadow: 1px 1px 3px var(--color-all-black);
+}

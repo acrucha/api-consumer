@@ -10,26 +10,39 @@ import { Infos } from '../interfaces/infos';
 })
 export class ConsumerService {
 
-  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json'});
   private readonly API = "https://jumpcnj.cin.ufpe.br/api/desafio/";
 
   constructor(private http: HttpClient) {}
 
-  getImageFromAPI(unidade: number, detail_level: number): Observable<any> {
+  async getImageFromAPI(unidade: number, detail_level: number): Promise<string> {
 
     let queryParams = new HttpParams();
-
     queryParams = queryParams.append('detail_level', detail_level);
+    let queryParamsStr = queryParams.toString();
 
-    return this.http.get<any>(this.API + "image/" + unidade, { params: queryParams })
+    const source: Observable<string> = this.http.get(this.API + "image/" + unidade + '/?' + queryParamsStr, { responseType: 'text' });
+
+    const infosSource: Promise<string> = lastValueFrom(source).then(source => {
+      return source;
+    }).catch(err => {
+      console.log(err.message);
+      return err;
+    });
+
+    return infosSource;
   }
 
   async getInfosFromAPI(unidade_id: number): Promise<Infos> {
     const body = JSON.stringify({ 'unidade_id': unidade_id });
 
     const source: Observable<any> = this.http.post(this.API + "infos/", body, { headers: this.headers });
-    const infosSource = await lastValueFrom(source);
-    const infos: Promise<Infos> = infosSource.json().infos;
+
+    const infos: Promise<Infos> = lastValueFrom(source).then(source => {
+      return source.infos;
+    }).catch(err => {
+      return err;
+    });
 
     return infos;
   }
